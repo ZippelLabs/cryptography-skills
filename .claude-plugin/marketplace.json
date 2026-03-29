@@ -1,0 +1,53 @@
+{
+  "name": "cryptography-skills",
+  "owner": {
+    "name": "ZippelLabs",
+    "url": "https://github.com/ZippelLabs"
+  },
+  "metadata": {
+    "version": "0.2.0",
+    "description": "Comprehensive AI skills for zero-knowledge proof security — circuits, proving systems, zkVMs, and DSL-specific auditing"
+  },
+  "plugins": [
+    {
+      "name": "zkvm-security",
+      "version": "0.1.0",
+      "description": "Audits zkVMs for soundness, witness, transcript, recursion, and verifier bugs. Covers SP1, RISC Zero, OpenVM, and similar systems.",
+      "author": {
+        "name": "ZippelLabs",
+        "url": "https://github.com/ZippelLabs"
+      },
+      "source": "./plugins/zkvm-security"
+    },
+    {
+      "name": "zkp-circuits",
+      "version": "0.1.0",
+      "description": "Detects under-constrained and over-constrained circuits across ZK DSLs including Circom, halo2, Noir, and GNARK.",
+      "author": {
+        "name": "ZippelLabs",
+        "url": "https://github.com/ZippelLabs"
+      },
+      "source": "./plugins/zkp-circuits"
+    },
+    {
+      "name": "zkp-proving-systems",
+      "version": "0.1.0",
+      "description": "Audits ZKP proving system backends for Fiat-Shamir bugs, polynomial arithmetic issues, and cryptographic primitive misuse.",
+      "author": {
+        "name": "ZippelLabs",
+        "url": "https://github.com/ZippelLabs"
+      },
+      "source": "./plugins/zkp-proving-systems"
+    },
+    {
+      "name": "circom-security",
+      "version": "0.1.0",
+      "description": "DSL-specific security skills for Circom circuits — signal constraints, component usage, and snarkjs integration.",
+      "author": {
+        "name": "ZippelLabs",
+        "url": "https://github.com/ZippelLabs"
+      },
+      "source": "./plugins/circom-security"
+    }
+  ]
+}

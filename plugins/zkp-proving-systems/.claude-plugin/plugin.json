@@ -1,0 +1,11 @@
+{
+  "name": "zkp-proving-systems",
+  "description": "Security skills for auditing ZKP proving system backends — Fiat-Shamir transforms, polynomial arithmetic, and cryptographic primitives.",
+  "version": "0.1.0",
+  "author": "ZippelLabs",
+  "license": "MIT",
+  "repository": "https://github.com/ZippelLabs/cryptography-skills",
+  "skills": [
+    "skills/fiat-shamir"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "zkvm-security",
+  "version": "0.1.0",
+  "description": "Audits zkVMs and zero-knowledge proof systems for soundness, witness, transcript, recursion, and verifier bugs. Informed by public audit reports from SP1, OpenVM, RISC Zero, and others.",
+  "author": {
+    "name": "ZippelLabs",
+    "url": "https://github.com/ZippelLabs"
+  }
+}
