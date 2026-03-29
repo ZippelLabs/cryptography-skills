@@ -7,6 +7,8 @@ description: "Audits Fiat-Shamir transform implementations for transcript bindin
 
 Use this skill when reviewing the Fiat-Shamir transform — the mechanism that converts interactive proofs to non-interactive by deriving challenges from a transcript.
 
+> **SoK Context**: Backend layer has 23 vulnerabilities (16% of total), with "Unsafe Verifier" being the most common (16 bugs). Frozen Heart and other Fiat-Shamir bugs affected multiple production systems including PlonK, Bulletproofs, and Nova. See [SoK Classification](../../../shared/sok-vulnerability-classification.md).
+
 ## When to Use
 
 Use this skill when:

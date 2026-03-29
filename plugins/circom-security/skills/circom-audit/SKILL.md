@@ -7,6 +7,8 @@ description: "Audits Circom circuits for DSL-specific bugs including signal cons
 
 Use this skill when reviewing Circom circuits for security vulnerabilities, with focus on DSL-specific patterns and common mistakes.
 
+> **SoK Context**: Circom is the most common DSL in audit reports. The top 3 root causes are: (1) wrong logic translation (34%), (2) missing input constraints (25%), (3) assigned-but-not-constrained (14%). See [SoK Classification](../../../shared/sok-vulnerability-classification.md).
+
 ## When to Use
 
 Use this skill when:

@@ -7,6 +7,8 @@ description: "Detects under-constrained circuits in ZKP systems that allow false
 
 Use this skill when reviewing zero-knowledge circuit implementations for soundness bugs — constraints that fail to prevent invalid witnesses from producing valid proofs.
 
+> **SoK Context**: Circuit layer accounts for 70% of all SNARK vulnerabilities. Under-constrained bugs cause 88% of security impacts. See [SoK Classification](../../../shared/sok-vulnerability-classification.md).
+
 ## When to Use
 
 Use this skill when:
@@ -426,8 +428,28 @@ Strong soundness findings explain:
 **Example:**
 > "The Merkle proof circuit constrains leaf hashing but not sibling ordering. An attacker can swap sibling positions to prove membership of a different leaf. Impact: false membership proofs. Fix: Add `position` signal constrained to 0/1 and use it to order hash inputs."
 
+## SoK Root Cause Statistics
+
+From [SoK: Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/abs/2402.15293) (141 vulnerabilities analyzed):
+
+| Root Cause | Bugs | % of Circuit Bugs |
+|------------|------|-------------------|
+| **Wrong logic translation** | 34 | 34% |
+| **Missing input constraints** | 25 | 25% |
+| **Assigned but not constrained** | 14 | 14% |
+| **Unsafe circuit reuse** | 9 | 9% |
+| **Arithmetic field errors** | 8 | 8% |
+| **Bad design** | 4 | 4% |
+| **Other** | 5 | 5% |
+
+**Priority order for auditing:**
+1. Logic translation errors (check all conditional/loop logic)
+2. Input constraints (verify all library component preconditions)
+3. Assignment-constraint mismatch (grep for `<--` in Circom)
+
 ## References
 
+- [SoK Vulnerability Classification](../../../shared/sok-vulnerability-classification.md) — Full SoK taxonomy with statistics
 - [Shared Vulnerability Taxonomy](../../../shared/vulnerability-taxonomy.md)
 - [Audit Checklist](../../../shared/audit-checklist.md)
 - [Security Tools](../../../shared/security-tools.md)
