@@ -166,7 +166,55 @@ let challenge = transcript.squeeze_challenge() & 0xFFFFFFFF;
 let challenge = transcript.squeeze_challenge();  // 254+ bits
 ```
 
+### 7. Last Challenge Attack
+
+The final challenge in a multi-round protocol is not properly bound to the complete proof state.
+
+**What it is:** In protocols with multiple challenge rounds, the last challenge may skip binding critical data committed in earlier rounds.
+
+**Real-World Examples:**
+- KZG-based SNARKs with batch openings
+- PlonK's final evaluation challenge
+- Recursive proof verification where outer proof challenge doesn't bind inner proof data
+
+**What to look for:**
+```rust
+// BUG: last challenge doesn't bind all commitments
+transcript.absorb(&commitment_1);
+let challenge_1 = transcript.squeeze_challenge();
+transcript.absorb(&commitment_2);
+let challenge_2 = transcript.squeeze_challenge();
+// Missing: final binding of all data before last use
+verifier.verify_final(challenge_2);  // vulnerable!
+
+// FIXED: bind all state before final challenge
+transcript.absorb(&commitment_1);
+let challenge_1 = transcript.squeeze_challenge();
+transcript.absorb(&commitment_2);
+transcript.absorb(&all_prior_commitments);  // re-bind all prior state
+let final_challenge = transcript.squeeze_challenge();
+verifier.verify_final(final_challenge);
+```
+
+**Reference:** [The Last Challenge Attack](https://eprint.iacr.org/2024/398)
+
+## Weak vs. Strong Fiat-Shamir
+
+Understanding this distinction is critical for security:
+
+| Type | Challenge Derivation | Security |
+|------|---------------------|----------|
+| **Weak** | `H(protocol_messages)` | Vulnerable to statement manipulation |
+| **Strong** | `H(vk ‖ statement ‖ protocol_messages)` | Secure against Frozen Heart |
+
+**Rule:** Always use Strong Fiat-Shamir. If the paper says "Fiat-Shamir" without clarifying, assume Strong Fiat-Shamir is required.
+
 ## Quick Start Workflow
+
+> **Note on API Terminology:** Code examples use generic `.absorb()` and `.squeeze_challenge()` for clarity. Real implementations vary:
+> - **Plonky2/Winterfell**: `.observe_*()` and `.get_challenge()`
+> - **Arkworks**: `.absorb_*()` and `.squeeze_challenge()`
+> - **Merlin**: `.append_message()` and `.challenge_bytes()`
 
 1. **Map the transcript flow**
    Create a diagram of what gets absorbed and when challenges are squeezed.
