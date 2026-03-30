@@ -1,0 +1,11 @@
+{
+  "name": "zkp-circuits",
+  "description": "Security skills for auditing zero-knowledge proof circuits across DSLs (Circom, halo2, Noir, GNARK).",
+  "version": "0.1.0",
+  "author": "ZippelLabs",
+  "license": "MIT",
+  "repository": "https://github.com/ZippelLabs/cryptography-skills",
+  "skills": [
+    "skills/circuit-soundness"
+  ]
+}

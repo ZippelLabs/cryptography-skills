@@ -1,0 +1,11 @@
+{
+  "name": "circom-security",
+  "description": "DSL-specific security skills for auditing Circom circuits and snarkjs integrations.",
+  "version": "0.1.0",
+  "author": "ZippelLabs",
+  "license": "MIT",
+  "repository": "https://github.com/ZippelLabs/cryptography-skills",
+  "skills": [
+    "skills/circom-audit"
+  ]
+}
