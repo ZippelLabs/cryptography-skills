@@ -5,7 +5,6 @@ A comprehensive AI skills marketplace for zero-knowledge proof security — circ
 > **Bug Pattern Sources**:
 > - [ZippelLabs/zkVMs-Security](https://github.com/ZippelLabs/zkVMs-Security) — Public zkVM audit reports
 > - [timimm/awesome-zero-knowledge-proofs-security](https://github.com/timimm/awesome-zero-knowledge-proofs-security) — Vulnerability classification
-> - [EF zkEVM Security Overview](https://blog.zkev.me/zkevm-security-overview/) — 18 security issues
 
 ## Available Skills
 
